@@ -9,7 +9,16 @@ const app = express();
 const PORT = 3000;
 
 
-//Middleware cause its important!!
+//Custom Middleware cause its important!!
+app.use((req, res) => {
+  res.status(404);
+  res.json({ error: "Resource Not Found" });
+});
+
+app.use((req, res) => {
+  res.status(500);
+  res.json({ error: "Resource Not Found" });
+});
 
 
 //function to hande errors
@@ -25,7 +34,8 @@ app.get('/', (req, res) => {
 
 
 
-// Listen to express on a certain port-----------------------
+// Listen to express on a certain port
+const port = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
