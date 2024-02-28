@@ -1,5 +1,5 @@
 
-[
+const usage = [
     {
       "id": 1,
       "userId": 1,
@@ -20,6 +20,8 @@
       "date": "2020-02-26",
       "workoutDuration": 75,
       "caloriesBurned": 400
-    }
-  ]
+    },
+  ];
+
+  model.exports = usage;
   
