@@ -1,24 +1,21 @@
 //first step: Require Express
 const express = require('express');
-const users = require('./data/users');
-const posts = require('./data/posts');
-const comments = require('./data/comments');
-
 
 const app = express();
 const PORT = 3000;
 
 
-//Custom Middleware cause its important!!
-app.use((req, res) => {
-  res.status(404);
-  res.json({ error: "Resource Not Found" });
-});
+//Custom Middlewares cause its important!!
+module.exports = (req, res, next) => {
+  console.log('Please chack your connection');
+  next();
+};
 
-app.use((req, res) => {
-  res.status(500);
-  res.json({ error: "Resource Not Found" });
-});
+//custom middleware 2
+module.exports = (err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+};
 
 
 //function to hande errors
