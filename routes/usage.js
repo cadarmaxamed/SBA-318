@@ -19,7 +19,7 @@ router
   })
   .post((req, res, next) => {
     if (req.body.userId && req.body.date && req.body.coloriesBurned && req.body.workoutDuration) {
-      const usage = {
+      const usages = {
         id: usage[usage.length - 1].id + 1,
         userId: req.body.userId,
         date: req.body.date,
@@ -27,7 +27,7 @@ router
         workoutDuration: req.body.workoutDuration,
       };
 
-      usage.push(usage);
+      usage.push(usages);
       res.json(usage[usage.length - 1]);
     } else next(error(400, 'Data Not Enough'));
   });
@@ -50,11 +50,11 @@ router
       },
     ];
 
-    if (usage) res.json({ usage, links });
+    if (usages) res.json({ usage, links });
     else next();
   })
   .patch((req, res, next) => {
-    const usage = usage.find((p, i) => {
+    const usages = usage.find((p, i) => {
       if (p.id == req.params.id) {
         for (const key in req.body) {
           usage[i][key] = req.body[key];
